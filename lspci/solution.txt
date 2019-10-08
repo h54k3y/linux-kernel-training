@@ -1,12 +1,19 @@
-Problem: Write a user-space program to parse information available in
+*Problem:
+Write a user-space program to parse information available in
 /proc/bus/pci/ and /sys/bus/pci directories to print out which
 devices are connected to a slot - slot number is the input
 argument to the program.
 
 
-Solution1(test1.c): Execute "lspci -v -mm -s <argv[1]>" and print the result.
+*Solution1(test1.c):
+Execute "lspci -v -mm -s <argv[1]>" and print the result.
 
-Solution2(test2.c): Execute "lspci -mm -s <argv[1]>", and parse and print the result. I made this for C practice and the output is same as Solution1. I couldn't figure out all of the type of the information(ex."Device", "Class", "Vendor"...) and options that begin with "-"(ex."-r", "-p"). So I programmed it so that I could easily add types later. 
+*Solution2(test2.c):
+Execute "lspci -mm -s <argv[1]>", and parse and print the result.
+I made this for C practice and the output is same as Solution1.
+I couldn't figure out all of the type of the information(ex."Device", "Class", "Vendor"...) and options that begin with "-"(ex."-r", "-p").
+So I programmed it so that I could easily add types later. 
 
 
-output0_.txt: This is the output of executing test1 with argument "0" in my environment (like "./a.out 0").
+*output0_.txt:
+This is the output of executing test1 with argument "0" in my environment (like "./a.out 0").

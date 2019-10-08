@@ -3,7 +3,8 @@
 #include <string.h>
 #define BUF 1000
 #define OPT_NUM 2
-#define TITLE_NUM 8
+#define INFO_NUM 8
+#define STR_LEN 15
 
 int main(int argc, char *argv[])
 {
@@ -17,8 +18,9 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
-		const char title[TITLE_NUM][10] = { "Device:	", "Class:	", "Vendor:	", "Device:	", "SVendor:	", "SDevice:	", "Rev:	", "ProgIf:	"};
-		const char option[OPT_NUM] = {'r','p'};
+		const char info_title[INFO_NUM][STR_LEN] = { "Device:	", "Class:	", "Vendor:	", "Device:	", "SVendor:	", "SDevice:	"};
+		const char option_title[OPT_NUM][STR_LEN] = {"Rev:	", "ProgIf:	"};
+		const char option_type[OPT_NUM] = {'r','p'};
 		while (!feof(fp)) 
 		{
 			char buf[BUF] = {};
@@ -26,16 +28,15 @@ int main(int argc, char *argv[])
 			{
 				break;
 			}
-			int t_cnt = 0;
-			char opt_str[OPT_NUM][10] = {};
-			int opt_cnt = 0;
+			int info_title_ind = 0;
+			char opt_str[OPT_NUM][STR_LEN] = {};
 			for(int i = 0; i < sizeof(buf); i++)
 			{
 				if(i == 0)
 				{
 					//Print "Device:".
-					printf("%s", title[t_cnt]);
-					t_cnt++;
+					printf("%s", info_title[info_title_ind]);
+					info_title_ind++;
 					while((i < sizeof(buf)) && buf[i] != ' ')
 					{
 						printf("%c", buf[i]);
@@ -52,12 +53,12 @@ int main(int argc, char *argv[])
 						if((i+2 < sizeof(buf)) && (buf[i+2] == '\"'))
 						{
 							// Skip printing this info if it's empty string.
-							t_cnt++;
+							info_title_ind++;
 							continue;
 						}
 
-						printf("%s", title[t_cnt]);
-						t_cnt++;
+						printf("%s", info_title[info_title_ind]);
+						info_title_ind++;
 						int j = i+2;
 						while((j < sizeof(buf)) && buf[j] != '\"')
 						{
@@ -73,26 +74,25 @@ int main(int argc, char *argv[])
 					// Store options beginning with "-"" (ex."-r" and "-p").
 					if(i+1 < sizeof(buf))
 					{
-						int opt_ind = -1;
-						for(int j = 0; j < sizeof(option); j++)
+						int opt_type_ind = -1;
+						for(int j = 0; j < OPT_NUM; j++)
 						{
-							// Find a right option kind from the array "option[]".
-							if(option[j] == buf[i+1])
+							// Find a right option type from the array "option_type[]".
+							if(option_type[j] == buf[i+1])
 							{
-								opt_ind = j;
+								opt_type_ind = j;
 								break;
 							}
 						}
 
-						if(opt_ind != -1)
+						if(opt_type_ind != -1)
 						{
-							// If found the right option kind, store the option string.
-							opt_cnt++;
+							// If found the right option type, store the option string.
 							int j = i+2;
 							int cnt = 0;
 							while(j < sizeof(buf))
 							{
-								opt_str[opt_ind][cnt] = buf[j];
+								opt_str[opt_type_ind][cnt] = buf[j];
 								if((j+1 < sizeof(buf)) && (buf[j+1] == ' '))
 								{
 									break;
@@ -106,11 +106,15 @@ int main(int argc, char *argv[])
 				}
 			}
 
-			// Print stored options. 
-			for(int i = 0; i < opt_cnt; i++)
+			// Print stored options.
+			int option_titile_ind =0; 
+			for(int i = 0; i < OPT_NUM; i++)
 			{
-				printf("%s%s\n", title[t_cnt], opt_str[i]);
-				t_cnt++;
+				if(opt_str[i][0] != '\0')
+				{
+					printf("%s%s\n", option_title[option_titile_ind], opt_str[i]);
+				}
+				option_titile_ind++;
 			}
 			printf("\n");
 		}

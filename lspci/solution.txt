@@ -16,4 +16,4 @@ So I programmed it so that I could easily add types later.
 
 
 *output0_.txt:
-This is the output of executing test1 with argument "0" in my environment (like "./a.out 0").
+This is the output of executing test1 and test2 with argument "0" in my environment (like "./a.out 0").

@@ -1,0 +1,25 @@
+Device:	00:00.0
+Class:	Host bridge
+Vendor:	Intel Corporation
+Device:	Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor Host Bridge/DRAM Registers
+SVendor:	Matsushita Electric Industrial Co., Ltd.
+SDevice:	Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor Host Bridge/DRAM Registers
+Rev:	08
+
+Device:	01:00.0
+Class:	SD Host controller
+Vendor:	O2 Micro, Inc.
+Device:	SD/MMC Card Reader Controller
+SVendor:	Matsushita Electric Industrial Co., Ltd.
+SDevice:	SD/MMC Card Reader Controller
+Rev:	01
+ProgIf:	01
+
+Device:	02:00.0
+Class:	Network controller
+Vendor:	Intel Corporation
+Device:	Wireless 8260
+SVendor:	Intel Corporation
+SDevice:	Dual Band Wireless-AC 8260
+Rev:	3a
+

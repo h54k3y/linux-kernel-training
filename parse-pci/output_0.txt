@@ -1,0 +1,8 @@
+Bus: 0, Slot: 0, Function: 0, VendorID 8086, DeviceID 1904
+ClassID: 0600, RevisionID: 8, SubVendorID: 10f7, SubDeviceID: 8338
+
+Bus: 1, Slot: 0, Function: 0, VendorID 1217, DeviceID 8520
+ClassID: 0805, RevisionID: 1, SubVendorID: 10f7, SubDeviceID: 8338
+
+Bus: 2, Slot: 0, Function: 0, VendorID 8086, DeviceID 24f3
+ClassID: 0280, RevisionID: 3a, SubVendorID: 8086, SubDeviceID: 1010

@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #define BUF 500
-#define REVISION_ID 0x08
 #define CLASS_DEVICE 0x0a
+#define REVISION_ID 0x08
 #define SUBSYSTEM_VENDOR_ID 0x2c
 #define SUBSYSTEM_DEVICE_ID 0x2e
 
@@ -61,8 +61,8 @@ int  GetConfig(short bus, short slot, short function)
 
   fread(buf, sizeof(buf), 1, fp);
 
-  short rev_id =  (short)buf[REVISION_ID];
   short class_id = (short)((0xff & buf[CLASS_DEVICE + 1]) << 8) | (0xff & buf[CLASS_DEVICE]);
+  short rev_id =  (short)buf[REVISION_ID];
   short subvnd_id = (short)((0xff & buf[SUBSYSTEM_VENDOR_ID + 1]) << 8) | (0xff & buf[SUBSYSTEM_VENDOR_ID]);
   short subdev_id = (short)((0xff & buf[SUBSYSTEM_DEVICE_ID + 1]) << 8) | (0xff & buf[SUBSYSTEM_DEVICE_ID]);
 

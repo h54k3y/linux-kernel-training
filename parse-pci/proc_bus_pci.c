@@ -27,8 +27,8 @@ int main(int argc, char *argv[])
     sscanf(buf, "%x %x", &bus_dev_fun, &vndid_devid);
 
     short bus = bus_dev_fun >> 8U;
-    short slot = 0x1f & ((bus_dev_fun & 0xff) >> 3);
-    short function = 0x07 & (bus_dev_fun & 0xff);
+    short slot = 0x1f & ((0xff & bus_dev_fun) >> 3);
+    short function = 0x07 & (0xff & bus_dev_fun);
     int vendor_id = 0xffff & (vndid_devid >> 16);
     int device_id = 0xffff & vndid_devid;
 
@@ -62,15 +62,15 @@ int  GetConfig(short bus, short slot, short function)
   fread(buf, sizeof(buf), 1, fp);
 
   short rev_id =  (short)buf[REVISION_ID];
-  short class_id = (short)((buf[CLASS_DEVICE+1]&0xff)<<8)|(buf[CLASS_DEVICE]&0xff);
-  short subvnd_id = (short)((buf[SUBSYSTEM_VENDOR_ID+1]&0xff)<<8) |(buf[SUBSYSTEM_VENDOR_ID]&0xff);
-  short subdev_id = (short)((buf[SUBSYSTEM_DEVICE_ID+1]&0xff)<<8) | (buf[SUBSYSTEM_DEVICE_ID]&0xff);
+  short class_id = (short)((0xff & buf[CLASS_DEVICE + 1]) << 8) | (0xff & buf[CLASS_DEVICE]);
+  short subvnd_id = (short)((0xff & buf[SUBSYSTEM_VENDOR_ID + 1]) << 8) | (0xff & buf[SUBSYSTEM_VENDOR_ID]);
+  short subdev_id = (short)((0xff & buf[SUBSYSTEM_DEVICE_ID + 1]) << 8) | (0xff & buf[SUBSYSTEM_DEVICE_ID]);
 
   printf("ClassID: %04x, RevisionID: %x, ", class_id, rev_id);
 
   if((subvnd_id !=0) || (subdev_id != 0))
   {
-    printf("SubVendorID: %x, SubDeviceID: %x", subvnd_id&0xffff, subdev_id&0xffff);
+    printf("SubVendorID: %x, SubDeviceID: %x", 0xffff & subvnd_id, 0xffff & subdev_id);
   }
 
   fclose(fp);

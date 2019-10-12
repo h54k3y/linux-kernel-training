@@ -2,9 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #define BUF 500
-#define OPT_NUM 2
-#define INFO_NUM 8
-#define STR_LEN 15	
 #define REVISION_ID 0x08
 #define CLASS_DEVICE 0x0a
 #define SUBSYSTEM_VENDOR_ID 0x2c

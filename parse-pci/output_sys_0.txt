@@ -1,0 +1,30 @@
+Bus: 2
+Slot: 0
+Function: 0
+Vendor ID: 8086
+Device ID: 24f3
+Revision ID: 3a
+Device Class: 0280
+Subsystem Vendor ID: 8086
+Subsystem Device ID: 1010
+
+Bus: 1
+Slot: 0
+Function: 0
+Vendor ID: 1217
+Device ID: 8520
+Revision ID: 1
+Class Prog: 1
+Device Class: 0805
+Subsystem Vendor ID: 10f7
+Subsystem Device ID: 8338
+
+Bus: 0
+Slot: 0
+Function: 0
+Vendor ID: 8086
+Device ID: 1904
+Revision ID: 8
+Device Class: 0600
+Subsystem Vendor ID: 10f7
+Subsystem Device ID: 8338

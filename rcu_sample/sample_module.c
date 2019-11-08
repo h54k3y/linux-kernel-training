@@ -9,7 +9,7 @@
 #include <linux/sched.h>
 #define READ_THR 2
 #define READ_NUM 100
-#define MAX_CNT 10000
+#define MAX_CNT 100
 
 struct student
 {
@@ -138,7 +138,7 @@ static int test_add(void *data)
 {
 	int i = 0;
 	printk("<RSU_SAMPLE> test_add_start\n");
-	while ((i < MAX_CNT/100) && !kthread_should_stop())
+	while ((i < MAX_CNT) && !kthread_should_stop())
 	{
 		add_student(i, i);
 		i += 1;
@@ -152,7 +152,7 @@ static int test_update(void *data)
 {
 	int i = 0;
 	printk("<RSU_SAMPLE> test_update_start\n");
-	while ((i < MAX_CNT/1000) && !kthread_should_stop())
+	while ((i < MAX_CNT/10) && !kthread_should_stop())
 	{
 		msleep(10);
 		update_grade_info(i, i * -1);
@@ -166,7 +166,7 @@ static int test_delete(void *data)
 {
 	int i = 0;
 	printk("<RSU_SAMPLE> test_delete_start\n");
-	while ((i < MAX_CNT/1000) && !kthread_should_stop())
+	while ((i < MAX_CNT/10) && !kthread_should_stop())
 	{
 		msleep(20);
 		delete_student(i);

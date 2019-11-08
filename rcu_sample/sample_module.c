@@ -47,6 +47,7 @@ static void add_student(int id, int grade)
 	spin_lock(&students_mutex);
 	list_add_rcu(&sp->node, &students);
 	spin_unlock(&students_mutex);
+        synchronize_rcu();
 	printk("<RSU_SAMPLE> Added a student [id = %d]", id);
 }
 
@@ -115,7 +116,7 @@ static void print_student_info(void)
 	printk("<RSU_SAMPLE> PRINT START\n");
 	list_for_each_entry_rcu(sp, &students, node)
 	{
-		printk("<RSU_SAMPLE> [id: %d, grade: %d]", sp->id, sp->grade);
+		printk("<RSU_SAMPLE> Printing [id: %d, grade: %d]", sp->id, sp->grade);
 	}
 	printk("<RSU_SAMPLE> PRINT END\n");
 	rcu_read_unlock();

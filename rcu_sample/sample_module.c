@@ -36,7 +36,8 @@ static void add_student(int id, int grade)
 	{
 		if (ptr->id == id)
 		{
-			printk("<RSU_SAMPLE> Add Error: already exisit [id = %d]\n", id);
+			rcu_read_unlock();
+                        printk("<RSU_SAMPLE> Add Error: already exisit [id = %d]\n", id);
 			return;
 		}
 	}
